@@ -8,7 +8,7 @@
     "css-loader": "^3.5.3",
     "html-webpack-plugin": "^4.5.0",
     "mini-css-extract-plugin": "^0.9.0",
-    "serve": "^11.0.0",
+    "serve": "^13.0.2",
     "style-loader": "1.2.1",
     "svelte": "^3.0.0",
     "svelte-loader": "2.13.3",

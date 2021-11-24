@@ -25,9 +25,9 @@
     "css-loader": "^5.2.1",
     "html-webpack-plugin": "^5.3.1",
     "style-loader": "2.0.0",
-    "webpack": "5.31.2",
-    "webpack-cli": "4.6.0",
-    "webpack-dev-server": "3.11.2"
+    "webpack": "^5.64.2",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.5.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.13.10",
