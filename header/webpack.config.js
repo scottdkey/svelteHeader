@@ -1,27 +1,32 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const preprocess = require("svelte-preprocess");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const path = require("path");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const mode = process.env.NODE_ENV || "development";
+const port = process.env.PORT ? process.env.PORT : 3001;
 const prod = mode === "production";
 
 module.exports = {
   entry: {
-    bundle: ["./src/main.js"],
+    bundle: ["./src/main.ts"],
   },
   resolve: {
     alias: {
-      svelte: path.resolve("node_modules", "svelte"),
+      svelte: path.dirname(require.resolve("svelte/package.json")),
     },
-    extensions: [".mjs", ".js", ".svelte"],
+    extensions: [".mjs", ".js", ".svelte", ".ts"],
     mainFields: ["svelte", "browser", "module", "main"],
   },
   output: {
     path: __dirname + "/public",
     filename: "[name].js",
     chunkFilename: "[name].[id].js",
-    publicPath: "http://localhost:8080/",
+    publicPath: `http://localhost:${port}/`,
   },
   module: {
     rules: [
@@ -30,31 +35,60 @@ module.exports = {
         use: {
           loader: "svelte-loader",
           options: {
-            emitCss: true,
-            hotReload: true,
+            compilerOptions: {
+              dev: !prod,
+            },
+            emitCss: prod,
+            hotReload: !prod,
+            preprocess: preprocess({
+              postcss: false,
+              typescript: true,
+            }),
           },
         },
       },
       {
-        test: /\.css$/,
+        test: /node_modules\/svelte\/.*\.mjs$/,
+        resolve: {
+          fullySpecified: false,
+        },
+      },
+      {
+        test: /\.(css|scss)$/i,
+        exclude: (modulePath) => /ckeditor5-/.test(modulePath),
         use: [
-          /**
-           * MiniCssExtractPlugin doesn't support HMR.
-           * For developing, use 'style-loader' instead.
-           * */
-          prod ? MiniCssExtractPlugin.loader : "style-loader",
-          "css-loader",
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.scss$/i,
+        enforce: "pre",
+        use: [
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
         ],
       },
     ],
   },
   devServer: {
-    port: 8080,
+    port,
   },
   mode,
   plugins: [
     new ModuleFederationPlugin({
-      name: "header",
+      name: "consumer",
       filename: "remoteEntry.js",
       remotes: {},
       exposes: { "./Header": "./src/Header.svelte" },

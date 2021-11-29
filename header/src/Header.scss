@@ -1,0 +1,11 @@
+header {
+  background: dodgerblue;
+  padding: 2em;
+  font-size: xx-large;
+  display: grid;
+  grid-template-columns: 90% 10%;
+  border-radius: 40px;
+  #countBox {
+    color: purple;
+  }
+}
