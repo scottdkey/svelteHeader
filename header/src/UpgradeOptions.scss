@@ -1,0 +1,26 @@
+#choice {
+  display: flex;
+  flex-direction: row;
+  .buttonContainer {
+    fill: solid;
+    background: rgba(138, 153, 168, 0.25);
+    .activeButton {
+      border-radius: 20px;
+    }
+    .inactiveButton {
+      background: rgba(255, 255, 255, 0);
+      border: none;
+    }
+  }
+}
+.optionsRow {
+  display: flex;
+  flex-direction: row;
+  .optionsContainer {
+    width: 270px;
+    height: 271px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+  }
+}

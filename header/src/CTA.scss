@@ -1,0 +1,22 @@
+#upgrade {
+  width: 198px;
+  height: 40px;
+  border-radius: 3px;
+  padding: 10px 12px 10px 12px;
+  background: #0074ab;
+  &:hover {
+    filter: brightness(95%);
+  }
+  border: none;
+
+  #buttonContent {
+    font-family: "PS TT Commons", "Times New Roman", Times, serif;
+    font-size: 16px;
+    color: #ffffff;
+    vertical-align: center;
+    align-self: center;
+    font-style: DemiBold;
+    letter-spacing: 1%;
+    fill: solid;
+  }
+}
