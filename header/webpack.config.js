@@ -88,10 +88,13 @@ module.exports = {
   mode,
   plugins: [
     new ModuleFederationPlugin({
-      name: "consumer",
+      name: "CTA",
       filename: "remoteEntry.js",
       remotes: {},
-      exposes: { "./Header": "./src/Header.svelte" },
+      exposes: {
+        "./CTA": "./src/CTA.svelte",
+        "./Header": "./src/Header.svelte",
+      },
       shared: require("./package.json").dependencies,
     }),
     new MiniCssExtractPlugin({
