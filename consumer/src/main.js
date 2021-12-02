@@ -1,6 +1,6 @@
 import App from "./App.svelte";
 
-window.header.get("./Header").then((module) => {
+window.header.get("Header").then((module) => {
   const Header = module().default;
 
   new Header({

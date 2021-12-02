@@ -88,12 +88,12 @@ module.exports = {
   mode,
   plugins: [
     new ModuleFederationPlugin({
-      name: "CTA",
+      name: "header",
       filename: "remoteEntry.js",
       remotes: {},
       exposes: {
-        "./CTA": "./src/CTA.svelte",
         "./Header": "./src/Header.svelte",
+        "./CTA": "./src/CTA.svelte"
       },
       shared: require("./package.json").dependencies,
     }),

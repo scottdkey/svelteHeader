@@ -7,14 +7,22 @@ window.header.get("./Header").then((module) => {
   const Header = module().default;
 
   new Header({
-    target: document.getElementById("header"),
-  });
+      target: document.getElementById("header")
+  })
 });
+
+window.header.get("./CTA").then((module) => {
+    const CTA = module().default;
+
+    new CTA({
+        target: document.getElementById("cta")
+    })
+})
 
 const App = () => (
   <>
-    <div id="header"></div>
-
+    <div id="header"/>
+      <div id="cta"/>
     <div>Hi there, I'm React from Webpack 5.</div>
     <button onClick={() => window.addToCart()}>Add to Cart React!</button>
   </>

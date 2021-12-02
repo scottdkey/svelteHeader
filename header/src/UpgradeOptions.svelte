@@ -1,6 +1,7 @@
 <script lang="ts">
   import "./UpgradeOptions.scss";
 
+  export let hasStandardPlan: boolean;
   export let nextPhase: (UpgradeType: string, Monthly: boolean) => void;
   let monthly: boolean = false;
 
@@ -14,28 +15,32 @@
     timePeriod: string;
     libraryContentCopy: string;
   }[] => {
-    const timePeriod = `per ${monthly ? "monthly" : "yearly"}`;
+    const timePeriod = `per ${monthly ? "month" : "year"}`;
     const savingsPercent = 33;
-
-    return [
-      {
-        upgradeType: "Standard",
-        savingsPercent,
-        discountedPrice: monthly ? 10 : 199,
-        originalPrice: monthly ? 20 : 299,
-        timePeriod,
-        libraryContentCopy: "Core course library, paths and skill assments",
-      },
-      {
-        upgradeType: "Premium",
-        savingsPercent,
-        discountedPrice: monthly ? 20 : 299,
-        originalPrice: monthly ? 35 : 449,
-        timePeriod,
-        libraryContentCopy:
-          "Entire library of core and expanded courses, exams, projects and hands-on learning.",
-      },
-    ];
+    let returnArray;
+    let standard = {
+      upgradeType: "Standard",
+      savingsPercent,
+      discountedPrice: monthly ? 10 : 199,
+      originalPrice: monthly ? 20 : 299,
+      timePeriod,
+      libraryContentCopy: "Core course library, paths and skill assments",
+    };
+    let premium = {
+      upgradeType: "Premium",
+      savingsPercent,
+      discountedPrice: monthly ? 20 : 299,
+      originalPrice: monthly ? 35 : 449,
+      timePeriod,
+      libraryContentCopy:
+        "Entire library of core and expanded courses, exams, projects and hands-on learning.",
+    };
+    if (hasStandardPlan) {
+      returnArray = [premium];
+    } else {
+      returnArray = [standard, premium];
+    }
+    return returnArray;
   };
 </script>
 

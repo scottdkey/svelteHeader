@@ -34,7 +34,7 @@
 
 <Modal {isOpenModal} on:closeModal={closeModal}>
   {#if phase === 0}
-    <UpgradeOptions {nextPhase} />
+    <UpgradeOptions {nextPhase} hasStandardPlan={false} />
   {:else if phase === 1}
     <div>Upgrade to Premium/ Upgrade to Standard</div>
   {:else if phase === 2}

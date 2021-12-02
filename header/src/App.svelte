@@ -1,5 +1,4 @@
 <script lang="ts">
-  // import Modal from "svelte-simple-modal"
   import Header from "./Header.svelte"
   import CTA from "./CTA.svelte"
   
@@ -9,10 +8,8 @@
   }
 </script>
 
-<!-- <Header/> -->
-<!-- <Modal> -->
+ <Header/>
   <CTA />
-<!-- </Modal> -->
 
-<!-- <div>Hello from Svelte</div>
-<button on:click={onClick}>Add to cart!</button> -->
+ <div>Hello from Svelte</div>
+<button on:click={onClick}>Add to cart!</button>
