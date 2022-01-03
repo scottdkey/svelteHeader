@@ -1,12 +1,17 @@
 <script lang="ts">
-  import "./UpgradeOptions.scss";
+  import { hasStandardPlan } from "./stores";
 
-  export let hasStandardPlan: boolean;
+  import "./UpgradeOptions.scss";
+  import {onMount} from "svelte";
+
+  export let standardPlanState: boolean;
   export let nextPhase: (UpgradeType: string, Monthly: boolean) => void;
   let monthly: boolean = false;
 
+
   const choices = (
-    monthly
+    monthly,
+    hasStandardPlan
   ): {
     upgradeType: string;
     savingsPercent: number;
@@ -17,7 +22,6 @@
   }[] => {
     const timePeriod = `per ${monthly ? "month" : "year"}`;
     const savingsPercent = 33;
-    let returnArray;
     let standard = {
       upgradeType: "Standard",
       savingsPercent,
@@ -35,30 +39,27 @@
       libraryContentCopy:
         "Entire library of core and expanded courses, exams, projects and hands-on learning.",
     };
-    if (hasStandardPlan) {
-      returnArray = [premium];
-    } else {
-      returnArray = [standard, premium];
-    }
-    return returnArray;
+    return hasStandardPlan ? [premium] : [standard, premium]
   };
 </script>
 
-<div id="choice">
-  <div>Upgrade Now</div>
-  <div class="buttonContainer">
-    <button
-      class={monthly ? "activeButton" : "inactiveButton"}
-      on:click={() => (monthly = true)}>Monthly</button
-    >
-    <button
-      class={!monthly ? "activeButton" : "inactiveButton"}
-      on:click={() => (monthly = false)}>Yearly</button
-    >
+<div id="UpgradeOptionsHeader">
+  <div id="innerHeader">
+    <div id="callToAction">Upgrade Now</div>
+    <div class="buttonContainer">
+      <button
+        class={monthly ? "activeButton" : "inactiveButton"}
+        on:click={() => (monthly = true)}>Monthly</button
+      >
+      <button
+        class={!monthly ? "activeButton" : "inactiveButton"}
+        on:click={() => (monthly = false)}>Yearly</button
+      >
+    </div>
   </div>
 </div>
 <div class="optionsRow">
-  {#each choices(monthly) as c}
+  {#each choices(monthly, standardPlanState) as c}
     <div class="optionsContainer">
       <div>
         <div>{c.upgradeType}</div>

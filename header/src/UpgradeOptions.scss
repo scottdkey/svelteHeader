@@ -1,26 +1,81 @@
-#choice {
-  display: flex;
-  flex-direction: row;
-  .buttonContainer {
-    fill: solid;
-    background: rgba(138, 153, 168, 0.25);
-    .activeButton {
-      border-radius: 20px;
+#UpgradeOptionsHeader {
+
+  width: 100%;
+  height: 96px;
+  padding: 8px 8px 0 8px;
+  fill: #ffffff;
+  vertical-align: middle;
+  #innerHeader {
+    margin-top: 40px;
+    margin-left: 24px;
+    margin-right: 18px;
+    display: flex;
+    flex-direction: row;
+    #callToAction {
+      font-size: 24px;
+      align-self: flex-start;
+      letter-spacing: -1%;
+      line-height: 32px;
+      font-weight: 600;
+      vertical-align: middle;
+      color: rgba(0, 0, 0, 0.9);
     }
-    .inactiveButton {
-      background: rgba(255, 255, 255, 0);
-      border: none;
+    .buttonContainer {
+      margin-left: auto;
+      display: flex;
+      flex-direction: row;
+      border: rgba(0, 0, 0, 0.15) solid 1px;
+      height: 24px;
+      border-radius: 100px;
+      padding: 0;
+      text-align: center;
+      size: 12px;
+      background: rgba(138, 153, 168, 0.25);
+      .buttonProtoType {
+        line-height: 16px;
+        color: rgba(0, 0, 0, 0.9);
+        height: 24px;
+        border-radius: 100px;
+        padding: 3px 12px 3px 12px;
+      }
+      .activeButton {
+        @extend .buttonProtoType;
+        // width: 61px;
+        background-color: #ffffff;
+        border: rgba(0, 0, 0, 0.15) solid 1px;
+      }
+      .inactiveButton {
+        @extend .buttonProtoType;
+        background: rgba(255, 255, 255, 0);
+        border: none;
+      }
     }
   }
 }
 .optionsRow {
+  color: black;
   display: flex;
   flex-direction: row;
+  margin-bottom: 47px;
+
   .optionsContainer {
     width: 270px;
     height: 271px;
     border: 1px solid black;
     display: flex;
     flex-direction: column;
+
+    &:first-child {
+      margin-left: 24px;
+      margin-right: 7.5px;
+    }
+    &:last-child {
+      margin-left: 7.5px;
+      margin-right: 24px;
+    }
+    &:only-of-type {
+      margin-left: 63px;
+      margin-right: 63px;
+    }
   }
 }

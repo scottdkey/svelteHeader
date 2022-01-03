@@ -42,5 +42,7 @@
     transform: translate(-50%, -50%);
     background: #ffffff;
     opacity: 1;
+    border-radius: 6px;
+    padding: 8px 8px 0px 8px;
   }
 </style>

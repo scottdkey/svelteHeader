@@ -39,5 +39,8 @@
     "build": "NODE_ENV=production webpack --config webpack.config.js --mode production",
     "dev": "webpack serve",
     "analyze": "webpack --config webpack.config.js --mode production --analyze"
+  },
+  "dependencies": {
+    "@pluralsight/ps-design-system-core": "^9.0.0"
   }
 }
