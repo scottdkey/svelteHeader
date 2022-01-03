@@ -2,6 +2,7 @@
   import Header from "./Header.svelte"
   import CTAModal from "./CTAwithModal.svelte"
   import CTA from "./CTA.svelte"
+  import CTAwithModal from "./CTAwithModal.svelte";
   
 
     const onClick = () => {
@@ -10,7 +11,8 @@
 </script>
 
 <!-- <Header/>-->
-  <CTA />
+<!--  <CTA />-->
+    <CTAwithModal />
 
  <!-- <div>Hello from Svelte</div> -->
 <!--<button on:click={onClick}>Add to cart!</button> -->

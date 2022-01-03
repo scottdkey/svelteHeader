@@ -1,13 +1,10 @@
 <script lang="ts">
-  import { hasStandardPlan } from "./stores";
-
   import "./UpgradeOptions.scss";
-  import {onMount} from "svelte";
 
   export let standardPlanState: boolean;
   export let nextPhase: (UpgradeType: string, Monthly: boolean) => void;
+  export let closeModal: () => void;
   let monthly: boolean = false;
-
 
   const choices = (
     monthly,
@@ -28,7 +25,7 @@
       discountedPrice: monthly ? 10 : 199,
       originalPrice: monthly ? 20 : 299,
       timePeriod,
-      libraryContentCopy: "Core course library, paths and skill assments",
+      libraryContentCopy: "Core course library, paths and skill assignments",
     };
     let premium = {
       upgradeType: "Premium",
@@ -39,10 +36,16 @@
       libraryContentCopy:
         "Entire library of core and expanded courses, exams, projects and hands-on learning.",
     };
-    return hasStandardPlan ? [premium] : [standard, premium]
+    return hasStandardPlan ? [premium] : [standard, premium];
   };
 </script>
 
+<button id="CloseModalButton" on:click={closeModal}
+  ><img
+    src="https://img.icons8.com/material-outlined/20/000000/delete-sign.png"
+    alt="close button"
+  /></button
+>
 <div id="UpgradeOptionsHeader">
   <div id="innerHeader">
     <div id="callToAction">Upgrade Now</div>

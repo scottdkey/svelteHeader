@@ -2,24 +2,21 @@
   import Modal from "./Modal.svelte";
   import UpgradeOptions from "./UpgradeOptions.svelte";
   import "./CTA.scss";
-  import {onMount} from "svelte"
+  import { onMount } from "svelte";
 
   let phase: number = 0;
-  let upgradeType: string
+  let upgradeType: string;
   let monthly = false;
-  let buttonCopy: string
+  let buttonCopy: string;
   let standardPlan: boolean;
 
   let open: boolean = false;
 
-
   onMount(() => {
-    standardPlan = true;
-    upgradeType = "Premium"
+    standardPlan = false;
+    upgradeType = "Premium";
     buttonCopy = "Upgrade and save 50%";
-  })
-
-
+  });
 
   function openModal(): void {
     phase = 0;
@@ -41,24 +38,30 @@
   }
 </script>
 
-<button id="upgrade" on:click={openModal}>
-  {buttonCopy}
-</button>
-<p>{upgradeType}</p>
-<p>{monthly ? "Monthly" : "Yearly"}</p>
-<p>Phase: {phase}</p>
-<label>
-  <input
-    type="checkbox"
-    bind:checked={standardPlan}
-    on:click={() => standardPlan = !standardPlan}
-  />
-  Standard Plan
-</label>
+<div>
+  <button id="upgrade" on:click={openModal}>
+    {buttonCopy}
+  </button>
+  <p>{upgradeType}</p>
+  <p>{monthly ? "Monthly" : "Yearly"}</p>
+  <p>Phase: {phase}</p>
+  <label>
+    <input
+      type="checkbox"
+      bind:checked={standardPlan}
+      on:click={() => (standardPlan = !standardPlan)}
+    />
+    Standard Plan
+  </label>
+</div>
 
 <Modal isOpenModal={open} on:closeModal={closeModal}>
   {#if phase === 0}
-    <UpgradeOptions nextPhase={setOptions} standardPlanState={standardPlan} />
+    <UpgradeOptions
+      nextPhase={setOptions}
+      standardPlanState={standardPlan}
+      {closeModal}
+    />
   {:else if phase === 1}
     <div on:click={nextPhase}>Upgrade to Premium/ Upgrade to Standard</div>
   {:else if phase === 2}

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ScssLintProjectComponent">
+    <option name="scssLintConfigFile" value="/usr/local/lib/ruby/gems/3.0.0/gems/scss_lint-0.59.0/config/default.yml" />
     <option name="pluginEnabled" value="true" />
   </component>
 </project>

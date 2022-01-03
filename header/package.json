@@ -41,6 +41,7 @@
     "analyze": "webpack --config webpack.config.js --mode production --analyze"
   },
   "dependencies": {
-    "@pluralsight/ps-design-system-core": "^9.0.0"
+    "@pluralsight/ps-design-system-core": "^9.0.0",
+    "svelte-inline-svg": "^1.0.8"
   }
 }
