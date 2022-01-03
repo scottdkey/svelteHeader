@@ -1,18 +1,16 @@
 <script lang="ts">
-  import Header from "./Header.svelte"
-  import CTAModal from "./CTAwithModal.svelte"
-  import CTA from "./CTA.svelte"
-  import CTAwithModal from "./CTAwithModal.svelte";
-  
+  import Header from "./Components/Header/Header.svelte";
+  import CTAWithModal from "./Components/CTAwithModal.svelte";
+  import CTA from "./Components/CTA.svelte";
 
-    const onClick = () => {
-    window.addToCart()
-  }
+  const onClick = () => {
+    window.addToCart();
+  };
 </script>
 
 <!-- <Header/>-->
 <!--  <CTA />-->
-    <CTAwithModal />
+<CTAWithModal />
 
- <!-- <div>Hello from Svelte</div> -->
+<!-- <div>Hello from Svelte</div> -->
 <!--<button on:click={onClick}>Add to cart!</button> -->

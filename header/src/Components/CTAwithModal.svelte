@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Modal from "./Modal.svelte";
-  import UpgradeOptions from "./UpgradeOptions.svelte";
+  import Modal from "./CTAComponents/Modal.svelte";
+  import UpgradeOptions from "./CTAComponents/UpgradeOptions.svelte";
   import "./CTA.scss";
   import { onMount } from "svelte";
 

@@ -29,6 +29,10 @@
   position: absolute;
   mix-blend-mode: normal;
   right: 19px;
+  border-radius: 10px;
+  &:hover {
+    background-color: rgb(228, 222, 222);
+  }
 }
 
 .buttonContainer {

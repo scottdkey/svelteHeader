@@ -92,8 +92,8 @@ module.exports = {
       filename: "remoteEntry.js",
       remotes: {},
       exposes: {
-        "./Header": "./src/Header.svelte",
-        "./CTA": "./src/CTAwithModal.svelte"
+        "./CTA": "./src/Components/CTA.svelte",
+        "./CTAWithModal": "./src/Components/CTAwithModal.svelte",
       },
       shared: require("./package.json").dependencies,
     }),
