@@ -3,19 +3,21 @@
   import UpgradeOptions from "./CTAComponents/UpgradeOptions.svelte";
   import "./CTA.scss";
   import { onMount } from "svelte";
+  import Checkout from "./CTAComponents/Checkout.svelte";
 
   let phase: number = 0;
   let upgradeType: string;
   let monthly = false;
   let buttonCopy: string;
   let standardPlan: boolean;
+  let savingsPercent = 33;
 
   let open: boolean = false;
 
   onMount(() => {
     standardPlan = false;
     upgradeType = "Premium";
-    buttonCopy = "Upgrade and save 50%";
+    buttonCopy = `Upgrade and save ${savingsPercent}%`;
   });
 
   function openModal(): void {
@@ -51,7 +53,7 @@
       bind:checked={standardPlan}
       on:click={() => (standardPlan = !standardPlan)}
     />
-    Standard Plan
+    has Standard Plan
   </label>
 </div>
 
@@ -60,15 +62,22 @@
     <UpgradeOptions
       nextPhase={setOptions}
       standardPlanState={standardPlan}
+      {savingsPercent}
       {closeModal}
     />
   {:else if phase === 1}
-    <div on:click={nextPhase}>Upgrade to Premium/ Upgrade to Standard</div>
+    <Checkout upgradeType={upgradeType} nextPhase={setOptions}/>
   {:else if phase === 2}
-    <div on:click={closeModal}>
+    <div on:click={closeModal} class="phasePlaceholder">
       Thank you! Welcome to the next level.(loading area)
     </div>
   {:else}
     <div>you got an error bud</div>
   {/if}
 </Modal>
+
+<style>
+  .phasePlaceholder {
+    color: black;
+  }
+</style>

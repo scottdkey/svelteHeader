@@ -1,0 +1,7 @@
+@import "~@pluralsight/ps-design-system-core/dist/index.module.scss";
+
+.container {
+  color: $ps-colors-black;
+  font-feature-settings: "tnum" on, "lnum" on;
+  font-family: $ps-type-font-family;
+}

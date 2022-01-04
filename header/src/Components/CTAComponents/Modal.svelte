@@ -20,7 +20,7 @@
   <slot />
 </div>
 
-<style>
+<style lang="scss">
   #background {
     display: var(--display);
     position: fixed;

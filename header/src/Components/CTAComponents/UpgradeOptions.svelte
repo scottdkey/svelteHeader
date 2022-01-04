@@ -4,6 +4,7 @@
   export let standardPlanState: boolean;
   export let nextPhase: (UpgradeType: string, Monthly: boolean) => void;
   export let closeModal: () => void;
+  export let savingsPercent: number;
   let monthly: boolean = false;
 
   const choices = (
@@ -18,7 +19,6 @@
     libraryContentCopy: string;
   }[] => {
     const timePeriod = `per ${monthly ? "month" : "year"}`;
-    const savingsPercent = 33;
     let standard = {
       upgradeType: "Standard",
       savingsPercent,
@@ -64,18 +64,23 @@
 <div class="optionsRow">
   {#each choices(monthly, standardPlanState) as c}
     <div class="optionsContainer">
-      <div>
-        <div>{c.upgradeType}</div>
-        <div>Save {c.savingsPercent}%</div>
+      <div class="header">{c.upgradeType}</div>
+      <div class="price">${c.discountedPrice}</div>
+      <div class="priceAddendum">
+        <div class="timePeriod">{c.timePeriod}</div>
+        <div class="savingsPercent">Save {c.savingsPercent}%</div>
       </div>
-      <div>
-        <div>${c.discountedPrice}</div>
-        <div>${c.originalPrice}</div>
-      </div>
-      <div>{c.timePeriod}</div>
 
-      <div>{c.libraryContentCopy}</div>
-      <button on:click={() => nextPhase(c.upgradeType, monthly)}>
+      <div
+        class="copy"
+        id={c.upgradeType === "Standard" ? "standard" : "premium"}
+      >
+        {c.libraryContentCopy}
+      </div>
+      <button
+        on:click={() => nextPhase(c.upgradeType, monthly)}
+        class="upgradeButton"
+      >
         Upgrade to {c.upgradeType}
       </button>
     </div>

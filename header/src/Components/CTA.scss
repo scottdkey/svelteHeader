@@ -1,6 +1,6 @@
 @import '~@pluralsight/ps-design-system-core/dist/index.module.scss';
 body {
-  color: $ps-colors-text-icon-high-on-dark;
+
   font-family: $ps-type-font-family;
   background: $ps-colors-background-dark-1;
   -webkit-font-smoothing: antialiased;
@@ -17,7 +17,7 @@ body {
   letter-spacing: 0.001em;
   font-weight: $ps-type-font-weight-600;
   font-size: $ps-type-font-size-base;
-  color: $ps-colors-white;
+  color: $ps-colors-text-icon-high-on-dark;
   &:hover {
     filter: brightness(80%);
   }
